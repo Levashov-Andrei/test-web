@@ -21,27 +21,27 @@ class CallbackTest {
     }
 
     @BeforeEach
-    public void beforeEash(){
+    public void beforeEach() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--sandbox");
+        options.addArguments("--no-sandbox");
         options.addArguments("--headless");
         driver = new ChromeDriver(options);
-        driver.get("http//localhost:9999");
+        driver.get("http://localhost:9999");
     }
 
     @AfterEach
-    public void afterEach(){
+    void afterEach(){
         driver.quit();
         driver = null;
     }
     @Test
-    public void shouldTestSomething(){
-        driver.findElement(By.cssSelector("[data-test-id='name') input")).sendKeys("Иванов Иван");
-        driver.findElement(By.cssSelector("[data-test-id='phone') input")).sendKeys("+79139130099");
-        driver.findElement(By.cssSelector("[data-test-id='agreement')")).click();
-        driver.findElement(By.cssSelector("[data-test-id='button.button')")).click();
+    void shouldTestSomething(){
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Иванов Дмитрий");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79111119012");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("button.button")).click();
         var actualText = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText().trim();
-        assertEquals("ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее времяю", actualText);
+        assertEquals("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.", actualText);
     }
 }

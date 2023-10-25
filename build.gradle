@@ -15,16 +15,13 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.6.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.11.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
 
-    // при реализации проекте с использованием Selenium вместо библиотеки com.codeborne:selenide подключаются
-    // org.seleniumhq.selenium:selenium-java и io.github.bonigarcia:webdrivermanager
 
 }
 
 test {
     useJUnitPlatform()
-    systemProperty 'selenide.headless', System.getProperty('selenide.headless')
 }
